@@ -1,4 +1,6 @@
-﻿using WebApplication1.Domain.Entities;
+﻿using System.Linq;
+using WebApplication1.Domain;
+using WebApplication1.Domain.Entities;
 
 namespace WebApplication1.BusinessLogic
 {
@@ -6,18 +8,17 @@ namespace WebApplication1.BusinessLogic
     {
         internal ULoginResp UserLoginAction(ULoginData data)
         {
-            var _username = "test@test";
-            var _password = "test";
-
-            if (data.Username != _username || data.Password != _password)
+            User result;
+            using (var db = new UserContext())
             {
-                return new ULoginResp
-                {
-                    Status = false,
-                    StatusMsg = "The Username or Password is Incorrect"
-                };
+                result = db.Users.FirstOrDefault(u => u.Username == data.Username && u.Password == data.Password);
+            }
+            if (result == null)
+            {
+                return new ULoginResp { Status = false, StatusMsg = "The username or password is incorrect" };
             }
             return new ULoginResp { Status = true };
         }
     }
 }
+  

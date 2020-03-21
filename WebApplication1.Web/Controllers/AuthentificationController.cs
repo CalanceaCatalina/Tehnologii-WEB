@@ -47,7 +47,7 @@ namespace WebApplication1.Web.Controllers
             return View();
         }
 
-        [HttpPost]
+       // [HttpPost]
         public ActionResult SignUp()
         {
             return View();
