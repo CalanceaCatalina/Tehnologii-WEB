@@ -13,4 +13,8 @@
     <ProjectReference Include="..\WebApplication1.Helpers\WebApplication1.Helpers.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
 </Project>

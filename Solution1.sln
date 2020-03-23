@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1.Web", "WebApplication1.Web\WebApplication1.Web.csproj", "{80AFA889-8CDB-4107-841C-A5261767728F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1.BusinessLogic", "WebApplication1.BusinessLogic\WebApplication1.BusinessLogic.csproj", "{6528B0FC-E171-418B-B96E-3197D6871E17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1.BusinessLogic", "WebApplication1.BusinessLogic\WebApplication1.BusinessLogic.csproj", "{6528B0FC-E171-418B-B96E-3197D6871E17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1.Domain", "WebApplication1.Domain\WebApplication1.Domain.csproj", "{24D327A1-7A51-487F-B3EC-6F6B56333E72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1.Domain", "WebApplication1.Domain\WebApplication1.Domain.csproj", "{24D327A1-7A51-487F-B3EC-6F6B56333E72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1.Helpers", "WebApplication1.Helpers\WebApplication1.Helpers.csproj", "{30274788-5C5D-43D2-877B-43697507937A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1.Helpers", "WebApplication1.Helpers\WebApplication1.Helpers.csproj", "{30274788-5C5D-43D2-877B-43697507937A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

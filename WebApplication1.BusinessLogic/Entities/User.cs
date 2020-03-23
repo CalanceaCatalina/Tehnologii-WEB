@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WebApplication1.Domain.Enums;
 
-namespace WebApplication1.Domain
+namespace WebApplication1.BusinessLogic.Entities
 {
-    class User
+    public class User
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -1,4 +1,9 @@
 ﻿@using System.Web.Optimization
+@using WebApplication1.Web.Extensions
+@{
+    var user = System.Web.HttpContext.Current.GetMySessionObject();
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,15 +52,20 @@
                     </div>
                 </li>
             </ul>
-
-            <form class="form-inline my-2 my-lg-0" style="background-color: #900C3F;>
-                <input class="form-signin mr-sm-2" type="sign-in" placeholder="sign-in" aria-label="sign-in">
-                <a class="btn btn-light" href="/Authentification/SignIn">Sign in</a>
-            </form>
-            <form class="form-inline my-2 my-lg-0" style="background-color: #900C3F;>
-                <input class="form-signup mr-sm-2" type="sign-up" placeholder="sign-up" aria-label="sign-up">
-                <a class="btn btn-light" href="/Authentification/SignUp">Sign up</a>
-            </form>
+            @if (user == null) {
+                <form class="form-inline my-2 my-lg-0" style="background-color: #900C3F;>
+                    <input class="form-signin mr-sm-2" type="sign-in" placeholder="sign-in" aria-label="sign-in">
+                    <a class="btn btn-light" href="/Authentification/SignIn">Sign in</a>
+                </form>
+                <form class="form-inline my-2 my-lg-0" style="background-color: #900C3F;>
+                    <input class="form-signup mr-sm-2" type="sign-up" placeholder="sign-up" aria-label="sign-up">
+                    <a class="btn btn-light" href="/Authentification/SignUp">Sign up</a>
+                </form>
+            } else
+            {
+                <a href="#" class="btn" style="color: white">👤 @user.Username</a>
+                <a href="#" class="btn" style="color: white">Logout</a>
+            }
         </div>
     </nav>
 

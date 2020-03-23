@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using WebApplication1.BusinessLogic;
 using WebApplication1.Domain.Entities;
@@ -26,7 +27,7 @@ namespace WebApplication1.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var data = new ULoginData
+                ULoginData data = new ULoginData
                 {
                     Username = login.Username,
                     Password = login.Password,
@@ -37,6 +38,9 @@ namespace WebApplication1.Web.Controllers
 
                 if (userLogin.Status)
                 {
+                    HttpCookie cookie = _session.GenCookie(login.Username);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
