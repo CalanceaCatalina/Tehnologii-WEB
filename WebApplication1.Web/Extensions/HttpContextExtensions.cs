@@ -1,5 +1,5 @@
 ﻿using System.Web;
-using WebApplication1.Domain.Entities.User;
+using WebApplication1.Domain.Entities;
 
 namespace WebApplication1.Web.Extensions
 {

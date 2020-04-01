@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using AutoMapper;
+using System.Web.Mvc;
 using WebApplication1.BusinessLogic;
+using WebApplication1.Web.App_Start;
 using WebApplication1.Web.Extensions;
 using WebApplication1.Web.Models;
 
@@ -8,16 +10,18 @@ namespace WebApplication1.Web.Controllers
 	public class BaseController : Controller
     {
         private readonly ISession _session;
+		public readonly Mapper _mapper;
 
-        public BaseController()
+		public BaseController()
         {
-            var bl = new InstanceBL();
+			_mapper = new Mapper(AutoMapperConfig.Initialize());
+			var bl = new InstanceBL();
             _session = bl.GetSessionBL();
         }
 
 		public void SessionStatus()
 		{
-			var apiCookie = Request.Cookies["LOGIN-KEY"];
+			var apiCookie = Request.Cookies["X-KEY"];
 			if (apiCookie != null)
 			{
 				var profile = _session.GetUserByCookie(apiCookie.Value);

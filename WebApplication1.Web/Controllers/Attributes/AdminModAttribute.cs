@@ -19,7 +19,7 @@ namespace WebApplication1.Web.Controllers.Attributes
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var apiCookie = HttpContext.Current.Request.Cookies["LOGIN-KEY"];
+            var apiCookie = HttpContext.Current.Request.Cookies["X-KEY"];
             if (apiCookie != null)
             {
                 var profile = _sessionBL.GetUserByCookie(apiCookie.Value);

@@ -13,7 +13,7 @@ namespace WebApplication1.BusinessLogic.Entities
 
         [Required]
         [Display(Name = "Username")]
-        [StringLength(30, MinimumLength = 4, ErrorMessage = "Username must be less than 30 Characters")]
+        [StringLength(40, MinimumLength = 10, ErrorMessage = "Username must be less than 30 Characters")]
         public string Username { get; set; }
 
         [Required]
@@ -24,13 +24,10 @@ namespace WebApplication1.BusinessLogic.Entities
         [Required]
         [EmailAddress]
         [Display(Name = "Email Address")]
-        [StringLength(30)]
+        [StringLength(40)]
         public string Email { get; set; }
 
         public URole Level { get; set; }
-
-        [StringLength(100)]
-        public string AvatarUrl { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime RegisterDate { get; set; }

@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.BusinessLogic.Entities
 {
-    public class Session
-    {
+	public class Session
+	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int SessionId { get; set; }

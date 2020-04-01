@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using WebApplication1.BusinessLogic;
 using WebApplication1.Domain.Entities;
 using WebApplication1.Web.Models;
@@ -51,9 +52,55 @@ namespace WebApplication1.Web.Controllers
             return View();
         }
 
-       // [HttpPost]
         public ActionResult SignUp()
         {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignUp(UserRegisterModel user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (user.Password != user.RePassword)
+                {
+                    ModelState.AddModelError("", "Password are not the same");
+                    return View();
+                }
+
+                var data = new URegisterData {
+                    Login = user.Login,
+                    Password = user.Password,
+                    RegisterDate = DateTime.Now
+                };
+
+                var registerResponse = _session.UserRegister(data);
+                if (registerResponse.Status)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", registerResponse.StatusMsg);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            var apiCookie = Request.Cookies["X-KEY"];
+            var sessionExist = _session.UserLogout(apiCookie.Value);
+            if (sessionExist.Status)
+            {
+                return new RedirectToRouteResult(new
+                    RouteValueDictionary(new { controller = "Home", action = "Index" }));
+            }
+            else
+            {
+                ModelState.AddModelError("", sessionExist.StatusMsg);
+            }
             return View();
         }
     }

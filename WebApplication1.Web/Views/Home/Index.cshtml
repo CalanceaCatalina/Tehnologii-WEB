@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<WebApplication1.Domain.Entities.PostEntity>
 @{
     ViewBag.Title = "Index";
 }
@@ -13,21 +13,17 @@
         </div>
     </div>
     <br />
-    <div class="row">
-        <div class="col" style="text-align: center;">
-            <h5><em><i>Flower Bouquets</i></em></h5>
-            <img src="~/Content/imgs/bouquet1.jpg" class="img-thumbnail" alt="Flower Bouquets" style="width:100%;max-width:300px">
-            <button class="btn btn-light" onclick="location.href='/Home/FlowerBouquets';" style="margin-left:auto;margin-right:auto;display:block;">Details</button>
+    @if (Model.Count() > 0)
+    {
+        <div class="row">
+            @foreach (var post in Model)
+            {
+            <div class="col" style="text-align: center;">
+                <h5><em><i>@post.Title</i></em></h5>
+                <img src="@post.ImageUrl" class="img-thumbnail" style="width:100%; max-width:300px">
+                <a href="/Home/Detail/@post.PostId" class="btn btn-light mt-2" style="margin-left:auto; margin-right:auto; display:block;">Details</a>
+            </div>
+            }
         </div>
-        <div class="col" style="text-align: center;">
-            <h5><em><i>Flower Compositions</i></em></h5>
-            <img src="~/Content/imgs/composition1.jpg" class="img-thumbnail" alt="Flower Compositions" style="width:100%;max-width:300px">
-            <button class="btn btn-light" onclick="location.href='/Home/FlowerCompositions';" style="margin-left:auto;margin-right:auto;display:block;">Details</button>
-        </div>
-        <div class="col" style="text-align: center;">
-            <h5><em><i>Cakes</i></em></h5>
-            <img src="~/Content/imgs/cake7.jpg" class="img-thumbnail" alt="Cakes" style="width:100%;max-width:300px">
-            <button class="btn btn-light" onclick="location.href='/Home/Cakes';" style="margin-left:auto;margin-right:auto;display:block;">Details</button>
-        </div>
-    </div>
+    }
 </div>

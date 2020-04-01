@@ -9,3 +9,10 @@
 .text2 {
     font-family: 'Satisfy', cursive;
 }
+
+.table td, .table th {
+    border-top-color: #dcd0cd;
+}
+.table thead th {
+    border: none;
+}

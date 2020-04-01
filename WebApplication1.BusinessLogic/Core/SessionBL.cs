@@ -1,6 +1,5 @@
 ﻿using System.Web;
 using WebApplication1.Domain.Entities;
-using WebApplication1.Domain.Entities.User;
 
 namespace WebApplication1.BusinessLogic
 {
@@ -16,9 +15,19 @@ namespace WebApplication1.BusinessLogic
             return Cookie(username);
         }
 
-        public ULoginResp UserLogin(ULoginData data)
+        public UActionResp UserLogin(ULoginData data)
         {
             return UserLoginAction(data);
+        }
+
+        public UActionResp UserRegister(URegisterData data)
+        {
+            return UserRegisterAction(data);
+        }
+
+        public UActionResp UserLogout(string cookie)
+        {
+            return UserLogoutAction(cookie);
         }
     }
 }
