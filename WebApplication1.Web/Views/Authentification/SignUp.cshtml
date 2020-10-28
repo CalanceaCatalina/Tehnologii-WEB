@@ -8,10 +8,10 @@
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Sign In</h5>
+                    <h5 class="card-title text-center">Sign Up</h5>
                     <p style="text-align: center">Please fill in this form to create an account!</p>
                     @Html.ValidationSummary(true)
-                    @using (Html.BeginForm("SignUp", "Authentification", FormMethod.Post, new { @id = "registerForm", @class = "form-signin" }))
+                    @using (Html.BeginForm("SignUp", "Authentification", FormMethod.Post, new { @id = "registerForm", @class = "form-signup" }))
                     {
                         @Html.AntiForgeryToken()
                         <div class="form-label-group mb-3">
