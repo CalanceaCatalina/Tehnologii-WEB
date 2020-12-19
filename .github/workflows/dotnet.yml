@@ -31,4 +31,9 @@ jobs:
       run: msbuild ${{ env.WEBAPP_NAME }} /p:Configuration=Release
 
     - name: Run Unit Tests
-      run: dotnet test
+      run: |
+          function Invoke-VSTest {
+            & "vstest.console.exe" $args
+            if(-not $?){ throw "fail!" }
+          }
+          Invoke-VSTest "WebApplication1.Tests/bin/Release/WebApplication1.Tests.dll"
