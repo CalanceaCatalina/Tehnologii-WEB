@@ -31,4 +31,4 @@ jobs:
       run: msbuild ${{ env.WEBAPP_NAME }} /p:Configuration=Release
 
     - name: Run Unit Tests
-      run: VSTest.Console.exe ${{ end.WEBAPP_NAME }}
+      run: dotnet test ${{ end.WEBAPP_NAME }}
