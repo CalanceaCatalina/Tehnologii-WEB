@@ -16,7 +16,7 @@ namespace WebApplication1.Tests
             var result = a + b;
 
             //assert - verifici rezultatul
-            Assert.AreEqual(4, result);
+            Assert.AreEqual(6, result);
         }
 
         [TestMethod]
