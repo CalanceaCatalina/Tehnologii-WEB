@@ -33,7 +33,12 @@ jobs:
     - name: Run Unit Tests
       run: |
           function Invoke-VSTest {
-            & "vstest.console.exe" $args
-            if(-not $?){ throw "fail!" }
+          $ErrorActionPreference = 'Stop'
+
+          $path = vswhere -latest -products * -requires Microsoft.VisualStudio.Workload.ManagedDesktop Microsoft.VisualStudio.Workload.Web -requiresAny -property installationPath
+          $path = join-path $path 'Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe'
+
+          if (test-path $path) {
+          & $path $args
           }
-          Invoke-VSTest "WebApplication1.Tests/bin/Release/WebApplication1.Tests.dll"
+          }
