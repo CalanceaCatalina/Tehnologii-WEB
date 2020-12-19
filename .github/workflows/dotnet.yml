@@ -31,4 +31,14 @@ jobs:
       run: msbuild ${{ env.WEBAPP_NAME }} /p:Configuration=Release
 
     - name: Run Unit Tests
-      run: dotnet test
+      run: |
+          function Invoke-VSTest {
+          $ErrorActionPreference = 'Stop'
+
+          $path = vswhere -latest -products * -requires Microsoft.VisualStudio.Workload.ManagedDesktop Microsoft.VisualStudio.Workload.Web -requiresAny -property installationPath
+          $path = join-path $path 'Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe'
+
+          if (test-path $path) {
+          & $path $args
+          }
+          }
