@@ -27,13 +27,9 @@ jobs:
     
     - name: Restore NuGet packages
       run: nuget restore ${{ env.WEBAPP_NAME }}
-
+      
     - name: Build
       run: msbuild ${{ env.WEBAPP_NAME }} /p:Configuration=Release
 
-  tests:
-    name: Unit Testing
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2.1.0
-      - run: dotnet test
+    - name: Run Unit Tests
+      run: dotnet test
