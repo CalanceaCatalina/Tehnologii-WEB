@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build and Upload
 
 on:
   push:
@@ -31,5 +31,8 @@ jobs:
     - name: Build
       run: msbuild ${{ env.WEBAPP_NAME }} /p:Configuration=Release
 
-    - name: Publish to folder
-      run: msbuild ${{ env.WEBAPP_NAME }} /p:Configuration=Release /p:DeployOnBuild=true /t:WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl=${{ env.WEBAPP_PACKAGE_PATH }} /p:PackageAsSingleFile=false
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: ${{ env.WEBAPP_PACKAGE_PATH }}
+        path: bin\Release\Publish
