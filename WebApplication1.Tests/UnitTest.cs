@@ -1,16 +1,14 @@
-using System;
-using Xunit;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-
-namespace WebApplication1.Test
+namespace WebApplication1.Tests
 {
-    public class UnitTests
+    [TestClass]
+    public class UnitTest
     {
-        [Fact]
-        public void Test1_GivenAandB_ExpectedResult()
+        [TestMethod]
+        public void Test_GivenAandB_ExpectedResult()
         {
             //arrange - aranjezi toate datele ptu test
-
             var a = 1;
             var b = 2;
 
@@ -18,10 +16,10 @@ namespace WebApplication1.Test
             var result = a + b;
 
             //assert - verifici rezultatul
-            Assert.Equal(3, result);
+            Assert.AreEqual(3, result);
         }
 
-        [Fact]
+        [TestMethod]
         public void Meow_Returns_ExpectedString()
         {
             //arrange
@@ -31,7 +29,7 @@ namespace WebApplication1.Test
             var result = cat.Meow();
 
             //assert
-            Assert.Equal("Meow!", result);
+            Assert.AreEqual("Meow!", result);
         }
     }
     public class Cat
