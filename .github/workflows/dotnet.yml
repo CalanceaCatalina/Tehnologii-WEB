@@ -37,3 +37,4 @@ jobs:
     - name: Run VSTest
       id: run_vstest
       working-directory: $\x64\Release\
+      run: vstest.console.exe .\WebApplication1.Tests.dll
