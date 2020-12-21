@@ -34,7 +34,5 @@ jobs:
       uses: darenm/Setup-VSTest@v1
       id: setup_vstest
 
-    - name: Run VSTest
-      id: run_vstest
-      working-directory: $\x64\Release\
-      run: vstest.console.exe .\WebApplication1.Tests.dll
+    - name: Run unit tests
+      run: dotnet test --no-build --configuration Release
