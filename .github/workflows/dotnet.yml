@@ -35,4 +35,4 @@ jobs:
       id: setup_vstest
 
     - name: Run unit tests
-      run: dotnet test --no-build --configuration Release
+      run: dotnet test --no-restore --verbosity normal
