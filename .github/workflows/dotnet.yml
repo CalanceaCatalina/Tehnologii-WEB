@@ -33,6 +33,6 @@ jobs:
     - name: Setup VSTest and add to PATH
       uses: darenm/Setup-VSTest@v1
       id: setup_vstest
-
-    - name: Run unit tests
-      run: dotnet test --no-restore --verbosity normal
+      
+    - name: Test with dotnet
+      run: dotnet test ${{ env.WEBAPP_NAME }}
