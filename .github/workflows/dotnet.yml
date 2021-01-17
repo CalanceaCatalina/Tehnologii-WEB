@@ -30,3 +30,5 @@ jobs:
     - name: Build
       run: msbuild ${{ env.WEBAPP_NAME }} /p:Configuration=Release
       
+    - name: Test with dotnet
+      run: dotnet test ${{ env.WEBAPP_NAME }}      
